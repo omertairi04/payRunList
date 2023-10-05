@@ -51,7 +51,7 @@
                 <% for (let item of data.payRunData) { %>
                     <tr>
                         <td><%= item.employee.name %> <%= item.employee.surname %></td>
-                        <td>Den. <%= item.baseGross %></td>
+                        <td><p style="float: left;">Den.</p> <p style="float: right;"><%= item.baseGross %></p></td>
                         <td>Den. <%= item.effectiveGross %></span>
                         <td>Den. <%= item.effectiveNetSalary %></span>
                         <td>Den. <%= item.incomeTaxAmount %></span>
