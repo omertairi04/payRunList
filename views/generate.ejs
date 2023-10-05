@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate Pay List</title>
+    <style>
+         /* Add CSS styles to control spacing and create columns */
+         table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 5px;
+        }
+
+        th {
+            background-color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <!-- Access the payRunData object in your EJS template -->
+    <h1>Pay Run Data</h1>
+    <ul>
+        <li>Status: <%= data.status %></li>
+        <li>Earnings: <%= data.earnings %></li>
+        <li>Effective Net: <%= data.effectiveNet %></li>
+        <li>Start Date: <%= data.startDate %></li>
+        <li>End Date: <%= data.endDate %></li>
+        <li>Paid Dates: <% if (data.paidDates != 0) { %>
+            <li><%= data.paidDates %></li>
+        <% } %></li>
+    </ul>
+
+        <h3>Pay Run List</h3>
+        <table>
+            <tr>
+                <th>Employee</th>
+                <th>Base Gross</th>
+                <th>Effective Gross Salary</th>
+                <th>Effective Net Salary</th>
+                <th>Income Tax Amount</th>
+                <th>Additional Health Ins Amount</th>
+                <th>Unemployment Ins Amount</th>
+            </tr>
+        </thead>
+            <tbody>
+                <% for (let item of data.payRunData) { %>
+                    <tr>
+                        <td><%= item.employee.name %> <%= item.employee.surname %></td>
+                        <td>Den. <%= item.baseGross %></td>
+                        <td>Den. <%= item.effectiveGross %></span>
+                        <td>Den. <%= item.effectiveNetSalary %></span>
+                        <td>Den. <%= item.incomeTaxAmount %></span>
+                        <td>Den. <%= item.additionalHealthInsAmount %></span>
+                        <td>Den. <%= item.unemploymentInsAmount %></span>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+</body>
+</html>
