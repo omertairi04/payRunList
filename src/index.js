@@ -10,44 +10,69 @@ app.set("view engine", "ejs");
 app.get('/', (req, res) => { 
     const payRuns = {
         "data": {
-            "status": "CONFIRMED",
+            "status": "CORRECTION_PHASE",
             "type": "STANDARD",
-            "id": "aa8a5abe-091a-4511-b0a1-5872e43810b1",
-            "startDate": "2023-10-01T00:00:00.000Z",
-            "endDate": "2023-10-31T00:00:00.000Z",
-            "month": "2023-10",
+            "id": "f00cc3da-1526-4cdb-813b-0deb2b3779d0",
+            "startDate": "2023-11-01T00:00:00.000Z",
+            "endDate": "2023-11-30T00:00:00.000Z",
+            "month": "2023-11",
             "ledgerId": "ebe9f11b-c1fc-4efb-96f9-54d30b46dc97",
             "noEmployees": 11,
-            "earnings": 15551.5,
-            "contributions": 110903.57,
-            "incomeTax": 29185.150000000005,
+            "earnings": 19262.40909090909,
+            "contributions": 112313.71545454547,
+            "incomeTax": 29556.240909090913,
             "deductions": 0,
-            "effectiveNet": 180947.93,
+            "effectiveNet": 183248.69363636363,
             "docMpin": [
                 {
-                    "url": "https://api-accountx.intelory.com/api/client/122134bf-9cfc-45e3-aa04-04eefbfde93f/pay-run/aa8a5abe-091a-4511-b0a1-5872e43810b1/file/mpin/2023-09-28-11-47-34-AM.txt",
+                    "url": "https://api-accountx.intelory.com/api/client/122134bf-9cfc-45e3-aa04-04eefbfde93f/pay-run/f00cc3da-1526-4cdb-813b-0deb2b3779d0/file/mpin/2023-09-28-12-58-12-PM.txt",
                     "type": "txt",
                     "name": "MPIN.txt",
-                    "status": "CONFIRMED"
+                    "status": "PAID"
+                },
+                {
+                    "url": "https://api-accountx.intelory.com/api/client/122134bf-9cfc-45e3-aa04-04eefbfde93f/pay-run/f00cc3da-1526-4cdb-813b-0deb2b3779d0/file/mpin/2023-09-28-13-01-33-PM.txt",
+                    "type": "txt",
+                    "name": "MPIN.txt",
+                    "status": "PAID"
+                },
+                {
+                    "url": "https://api-accountx.intelory.com/api/client/122134bf-9cfc-45e3-aa04-04eefbfde93f/pay-run/f00cc3da-1526-4cdb-813b-0deb2b3779d0/file/mpin/2023-10-02-11-16-10-AM.txt",
+                    "type": "txt",
+                    "name": "MPIN.txt",
+                    "status": "NOT_CONFIRMED"
                 }
             ],
             "payLists": [
                 {
-                    "url": "https://api-accountx.intelory.com/api/client/122134bf-9cfc-45e3-aa04-04eefbfde93f/pay-run/aa8a5abe-091a-4511-b0a1-5872e43810b1/file/pay-list/2023-09-28-11-47-34-AM.pdf",
+                    "url": "https://api-accountx.intelory.com/api/client/122134bf-9cfc-45e3-aa04-04eefbfde93f/pay-run/f00cc3da-1526-4cdb-813b-0deb2b3779d0/file/pay-list/2023-09-28-12-57-16-PM.pdf",
+                    "type": "PDF",
+                    "name": "PayList.pdf"
+                },
+                {
+                    "url": "https://api-accountx.intelory.com/api/client/122134bf-9cfc-45e3-aa04-04eefbfde93f/pay-run/f00cc3da-1526-4cdb-813b-0deb2b3779d0/file/pay-list/2023-09-28-13-00-37-PM.pdf",
+                    "type": "PDF",
+                    "name": "PayList.pdf"
+                },
+                {
+                    "url": "https://api-accountx.intelory.com/api/client/122134bf-9cfc-45e3-aa04-04eefbfde93f/pay-run/f00cc3da-1526-4cdb-813b-0deb2b3779d0/file/pay-list/2023-10-02-11-16-09-AM.pdf",
                     "type": "PDF",
                     "name": "PayList.pdf"
                 }
             ],
             "totalGross": 276300,
-            "paidDates": [],
-            "correctionPhase": false,
-            "createdAt": "2023-09-28T11:47:34.157Z",
-            "updatedAt": "2023-09-28T11:49:30.786Z",
+            "paidDates": [
+                "2023-09-28T12:57:41.000Z",
+                "2023-09-29T12:57:41.000Z"
+            ],
+            "correctionPhase": true,
+            "createdAt": "2023-09-28T12:54:22.583Z",
+            "updatedAt": "2023-10-02T11:16:10.035Z",
             "deletedAt": null,
             "payRunData": [
                 {
-                    "id": "e85fffff-a27e-4ac7-9333-f46c73d2ae3c",
-                    "payRunId": "aa8a5abe-091a-4511-b0a1-5872e43810b1",
+                    "id": "0fbeb414-ff91-47f7-952e-95bf2726b90a",
+                    "payRunId": "f00cc3da-1526-4cdb-813b-0deb2b3779d0",
                     "employeeId": "ff3c5b0b-9295-4655-b26e-538cd5805f63",
                     "effectiveGross": 61200,
                     "baseGross": 60000,
@@ -72,7 +97,13 @@ app.get('/', (req, res) => {
                     ],
                     "contributions": 23256,
                     "days": 22,
-                    "paySlips": [],
+                    "paySlips": [
+                        {
+                            "url": "https://api-accountx.intelory.com/api/client/122134bf-9cfc-45e3-aa04-04eefbfde93f/pay-run/f00cc3da-1526-4cdb-813b-0deb2b3779d0/file/pay-slip/ff3c5b0b-9295-4655-b26e-538cd5805f63.pdf",
+                            "type": "PDF",
+                            "name": "PaySlip.pdf"
+                        }
+                    ],
                     "totalAllowances": 1200,
                     "totalDeductions": 0,
                     "overtimeHolidaysTotalValue": 0,
@@ -85,21 +116,21 @@ app.get('/', (req, res) => {
                     "deductions": [
                         {
                             "value": 0,
-                            "id": "5b4eb2d6-5ed0-4145-af1c-38517c74fc5b",
+                            "id": "6f7d02a4-f280-4a35-aaba-c29ca29b079d",
                             "startDate": null
                         }
                     ],
                     "effectiveNetSalary": 37944,
-                    "activeSalary": true,
+                    "activeSalary": false,
                     "totalHoursWorked": 140.8,
                     "salaryPerHour": 426.1363636363636,
-                    "payOnlyContributions": false,
-                    "belongsToCurrentRerun": false,
-                    "correctionPhase": false,
+                    "payOnlyContributions": true,
+                    "belongsToCurrentRerun": true,
+                    "correctionPhase": true,
                     "selectedForRerun": false,
-                    "updatedAt": "2023-09-28T11:47:34.163Z",
-                    "dateUpdated": "2023-09-28 11:47 AM",
-                    "createdAt": "2023-09-28T11:47:34.163Z",
+                    "updatedAt": "2023-09-28T12:54:22.587Z",
+                    "dateUpdated": "2023-09-28 1:47 PM",
+                    "createdAt": "2023-09-28T12:54:22.587Z",
                     "employee": {
                         "id": "ff3c5b0b-9295-4655-b26e-538cd5805f63",
                         "name": "Ardit",
@@ -121,7 +152,7 @@ app.get('/', (req, res) => {
                         "healthInsuranceFundLocalOfficeId": 4,
                         "documents": [],
                         "createdAt": "2023-08-15T13:44:32.937Z",
-                        "updatedAt": "2023-10-04T08:54:59.261Z",
+                        "updatedAt": "2023-10-04T14:07:25.014Z",
                         "employment": {
                             "id": "7b1c1dd7-13a5-4879-85ee-6ea04465e2fa",
                             "employmentStartDate": "2023-08-13T22:00:00.000Z",
@@ -135,7 +166,7 @@ app.get('/', (req, res) => {
                             "role": "Manager",
                             "employeeId": "ff3c5b0b-9295-4655-b26e-538cd5805f63",
                             "createdAt": "2023-08-15T13:44:32.946Z",
-                            "updatedAt": "2023-10-04T08:54:59.267Z",
+                            "updatedAt": "2023-10-04T14:07:25.022Z",
                             "typeOfExperienceId": 1
                         },
                         "salary": {
@@ -148,21 +179,22 @@ app.get('/', (req, res) => {
                         },
                         "deductions": [
                             {
-                                "id": "7503b3b4-199e-40bd-855f-bbda1af90303",
+                                "type": "ADMINISTRATIVNA ZABRANA OD UJP",
+                                "id": "478206f1-d04a-4787-bfa7-306c4982dd3c",
                                 "employeeId": "ff3c5b0b-9295-4655-b26e-538cd5805f63",
-                                "deductionMultiplier": null,
+                                "deductionMultiplier": 0.3333333333333333,
                                 "totalDeductionAmount": 10000,
                                 "determinedDeductionAmountPerSala": null,
                                 "totalDeductionAmountLeft": null,
                                 "clientPartnerId": null,
-                                "startDate": null,
-                                "description": null
+                                "startDate": "2023-09-29T22:00:00.000Z",
+                                "description": "Test"
                             }
                         ],
                         "allowances": [
                             {
                                 "type": "ALLOWANCE TYPE 1",
-                                "id": "f4c4167d-5a20-4428-8ca0-8cee6161966c",
+                                "id": "c2966952-7e7a-4a16-8e39-be47d4e78007",
                                 "employeeId": "ff3c5b0b-9295-4655-b26e-538cd5805f63",
                                 "value": 1200
                             }
@@ -170,8 +202,8 @@ app.get('/', (req, res) => {
                     }
                 },
                 {
-                    "id": "45841805-5a4e-4dc6-8210-53a7715e7b5d",
-                    "payRunId": "aa8a5abe-091a-4511-b0a1-5872e43810b1",
+                    "id": "b639cafd-5c0d-452b-82e1-ef71ba825879",
+                    "payRunId": "f00cc3da-1526-4cdb-813b-0deb2b3779d0",
                     "employeeId": "d2309f35-6299-41f8-911e-067fbbdac100",
                     "effectiveGross": 32350,
                     "baseGross": 30000,
@@ -196,7 +228,13 @@ app.get('/', (req, res) => {
                     ],
                     "contributions": 12293,
                     "days": 22,
-                    "paySlips": [],
+                    "paySlips": [
+                        {
+                            "url": "https://api-accountx.intelory.com/api/client/122134bf-9cfc-45e3-aa04-04eefbfde93f/pay-run/f00cc3da-1526-4cdb-813b-0deb2b3779d0/file/pay-slip/d2309f35-6299-41f8-911e-067fbbdac100.pdf",
+                            "type": "PDF",
+                            "name": "PaySlip.pdf"
+                        }
+                    ],
                     "totalAllowances": 1000,
                     "totalDeductions": 0,
                     "overtimeHolidaysTotalValue": 0,
@@ -226,9 +264,9 @@ app.get('/', (req, res) => {
                     "belongsToCurrentRerun": false,
                     "correctionPhase": false,
                     "selectedForRerun": false,
-                    "updatedAt": "2023-09-28T11:47:34.163Z",
-                    "dateUpdated": "2023-09-28 11:47 AM",
-                    "createdAt": "2023-09-28T11:47:34.163Z",
+                    "updatedAt": "2023-09-28T12:54:22.587Z",
+                    "dateUpdated": "2023-09-28 12:51 PM",
+                    "createdAt": "2023-09-28T12:54:22.587Z",
                     "employee": {
                         "id": "d2309f35-6299-41f8-911e-067fbbdac100",
                         "name": "Omer",
@@ -309,8 +347,8 @@ app.get('/', (req, res) => {
                     }
                 },
                 {
-                    "id": "00a818b0-1cd7-4c27-b249-fa55a49b7776",
-                    "payRunId": "aa8a5abe-091a-4511-b0a1-5872e43810b1",
+                    "id": "8589db5a-36cb-4117-b1f5-c58d438df791",
+                    "payRunId": "f00cc3da-1526-4cdb-813b-0deb2b3779d0",
                     "employeeId": "7f456d61-cc2d-4e62-8b24-c53fb62440d0",
                     "effectiveGross": 31000,
                     "baseGross": 30000,
@@ -335,7 +373,13 @@ app.get('/', (req, res) => {
                     ],
                     "contributions": 11780,
                     "days": 22,
-                    "paySlips": [],
+                    "paySlips": [
+                        {
+                            "url": "https://api-accountx.intelory.com/api/client/122134bf-9cfc-45e3-aa04-04eefbfde93f/pay-run/f00cc3da-1526-4cdb-813b-0deb2b3779d0/file/pay-slip/7f456d61-cc2d-4e62-8b24-c53fb62440d0.pdf",
+                            "type": "PDF",
+                            "name": "PaySlip.pdf"
+                        }
+                    ],
                     "totalAllowances": 100,
                     "totalDeductions": 0,
                     "overtimeHolidaysTotalValue": 0,
@@ -360,9 +404,9 @@ app.get('/', (req, res) => {
                     "belongsToCurrentRerun": false,
                     "correctionPhase": false,
                     "selectedForRerun": false,
-                    "updatedAt": "2023-09-28T11:47:34.163Z",
-                    "dateUpdated": "2023-09-28 11:47 AM",
-                    "createdAt": "2023-09-28T11:47:34.163Z",
+                    "updatedAt": "2023-09-28T12:54:22.587Z",
+                    "dateUpdated": "2023-09-28 12:51 PM",
+                    "createdAt": "2023-09-28T12:54:22.587Z",
                     "employee": {
                         "id": "7f456d61-cc2d-4e62-8b24-c53fb62440d0",
                         "name": "Elira",
@@ -433,8 +477,8 @@ app.get('/', (req, res) => {
                     }
                 },
                 {
-                    "id": "1e5c5495-0ee8-4f48-928c-c07f00c0f5c3",
-                    "payRunId": "aa8a5abe-091a-4511-b0a1-5872e43810b1",
+                    "id": "b6475405-7db0-453d-9c3b-b2866dd0d028",
+                    "payRunId": "f00cc3da-1526-4cdb-813b-0deb2b3779d0",
                     "employeeId": "a3cd2ff7-654a-4901-9ec1-013faa5d94d5",
                     "effectiveGross": 36794,
                     "baseGross": 35000,
@@ -459,7 +503,13 @@ app.get('/', (req, res) => {
                     ],
                     "contributions": 13981.72,
                     "days": 22,
-                    "paySlips": [],
+                    "paySlips": [
+                        {
+                            "url": "https://api-accountx.intelory.com/api/client/122134bf-9cfc-45e3-aa04-04eefbfde93f/pay-run/f00cc3da-1526-4cdb-813b-0deb2b3779d0/file/pay-slip/a3cd2ff7-654a-4901-9ec1-013faa5d94d5.pdf",
+                            "type": "PDF",
+                            "name": "PaySlip.pdf"
+                        }
+                    ],
                     "totalAllowances": 44,
                     "totalDeductions": 0,
                     "overtimeHolidaysTotalValue": 0,
@@ -484,9 +534,9 @@ app.get('/', (req, res) => {
                     "belongsToCurrentRerun": false,
                     "correctionPhase": false,
                     "selectedForRerun": false,
-                    "updatedAt": "2023-09-28T11:47:34.163Z",
-                    "dateUpdated": "2023-09-28 11:47 AM",
-                    "createdAt": "2023-09-28T11:47:34.163Z",
+                    "updatedAt": "2023-09-28T12:54:22.587Z",
+                    "dateUpdated": "2023-09-28 12:51 PM",
+                    "createdAt": "2023-09-28T12:54:22.587Z",
                     "employee": {
                         "id": "a3cd2ff7-654a-4901-9ec1-013faa5d94d5",
                         "name": "Flamur",
@@ -562,8 +612,8 @@ app.get('/', (req, res) => {
                     }
                 },
                 {
-                    "id": "781c2d81-3446-4a4d-a740-fdffbf29607f",
-                    "payRunId": "aa8a5abe-091a-4511-b0a1-5872e43810b1",
+                    "id": "e60ad4d2-755a-4307-ad46-996c463477bc",
+                    "payRunId": "f00cc3da-1526-4cdb-813b-0deb2b3779d0",
                     "employeeId": "a1f93efd-d9b0-4344-976f-35bbd582fe3d",
                     "effectiveGross": 33450,
                     "baseGross": 30000,
@@ -588,7 +638,13 @@ app.get('/', (req, res) => {
                     ],
                     "contributions": 12711,
                     "days": 22,
-                    "paySlips": [],
+                    "paySlips": [
+                        {
+                            "url": "https://api-accountx.intelory.com/api/client/122134bf-9cfc-45e3-aa04-04eefbfde93f/pay-run/f00cc3da-1526-4cdb-813b-0deb2b3779d0/file/pay-slip/a1f93efd-d9b0-4344-976f-35bbd582fe3d.pdf",
+                            "type": "PDF",
+                            "name": "PaySlip.pdf"
+                        }
+                    ],
                     "totalAllowances": 3000,
                     "totalDeductions": 0,
                     "overtimeHolidaysTotalValue": 0,
@@ -613,9 +669,9 @@ app.get('/', (req, res) => {
                     "belongsToCurrentRerun": false,
                     "correctionPhase": false,
                     "selectedForRerun": false,
-                    "updatedAt": "2023-09-28T11:47:34.163Z",
-                    "dateUpdated": "2023-09-28 11:47 AM",
-                    "createdAt": "2023-09-28T11:47:34.163Z",
+                    "updatedAt": "2023-09-28T12:54:22.587Z",
+                    "dateUpdated": "2023-09-28 12:51 PM",
+                    "createdAt": "2023-09-28T12:54:22.587Z",
                     "employee": {
                         "id": "a1f93efd-d9b0-4344-976f-35bbd582fe3d",
                         "name": "Argjent",
@@ -686,8 +742,8 @@ app.get('/', (req, res) => {
                     }
                 },
                 {
-                    "id": "4bd829f3-113a-4277-b3a1-0e29d8c8d788",
-                    "payRunId": "aa8a5abe-091a-4511-b0a1-5872e43810b1",
+                    "id": "2d8cd98a-f130-4754-a8d1-0f66434e5a13",
+                    "payRunId": "f00cc3da-1526-4cdb-813b-0deb2b3779d0",
                     "employeeId": "1dae39d6-f389-4647-b1f9-019af133509a",
                     "effectiveGross": 2754,
                     "baseGross": 1200,
@@ -712,7 +768,18 @@ app.get('/', (req, res) => {
                     ],
                     "contributions": 1046.52,
                     "days": 22,
-                    "paySlips": [],
+                    "paySlips": [
+                        {
+                            "url": "https://api-accountx.intelory.com/api/client/122134bf-9cfc-45e3-aa04-04eefbfde93f/pay-run/f00cc3da-1526-4cdb-813b-0deb2b3779d0/file/pay-slip/1dae39d6-f389-4647-b1f9-019af133509a.pdf",
+                            "type": "PDF",
+                            "name": "PaySlip.pdf"
+                        },
+                        {
+                            "url": "https://api-accountx.intelory.com/api/client/122134bf-9cfc-45e3-aa04-04eefbfde93f/pay-run/f00cc3da-1526-4cdb-813b-0deb2b3779d0/file/pay-slip/1dae39d6-f389-4647-b1f9-019af133509a.pdf",
+                            "type": "PDF",
+                            "name": "PaySlip.pdf"
+                        }
+                    ],
                     "totalAllowances": 1500,
                     "totalDeductions": 0,
                     "overtimeHolidaysTotalValue": 0,
@@ -737,9 +804,9 @@ app.get('/', (req, res) => {
                     "belongsToCurrentRerun": false,
                     "correctionPhase": false,
                     "selectedForRerun": false,
-                    "updatedAt": "2023-09-28T11:47:34.163Z",
-                    "dateUpdated": "2023-09-28 11:47 AM",
-                    "createdAt": "2023-09-28T11:47:34.163Z",
+                    "updatedAt": "2023-09-28T12:54:22.587Z",
+                    "dateUpdated": "2023-09-28 1:00 PM",
+                    "createdAt": "2023-09-28T12:54:22.587Z",
                     "employee": {
                         "id": "1dae39d6-f389-4647-b1f9-019af133509a",
                         "name": "John",
@@ -815,19 +882,19 @@ app.get('/', (req, res) => {
                     }
                 },
                 {
-                    "id": "0a14a6c6-ac85-4818-8eda-c82227ba28a4",
-                    "payRunId": "aa8a5abe-091a-4511-b0a1-5872e43810b1",
+                    "id": "a906767e-1ba9-4284-98fb-e6cc29c3aa3d",
+                    "payRunId": "f00cc3da-1526-4cdb-813b-0deb2b3779d0",
                     "employeeId": "13985eb3-1bae-4fb6-885a-e6821858e4aa",
-                    "effectiveGross": 31555,
+                    "effectiveGross": 35265.90909090909,
                     "baseGross": 31400,
-                    "earnings": 155,
+                    "earnings": 3865.9090909090905,
                     "experiencePay": 0,
                     "overtimeHours": 0,
                     "overtimeAmount": 0,
                     "publicHolidayHours": 0,
                     "publicHolidayAmount": 0,
-                    "nightTimeHours": 0,
-                    "nightTimeAmount": 0,
+                    "nightTimeHours": 20,
+                    "nightTimeAmount": 3710.9090909090905,
                     "sundayHours": 0,
                     "sundayAmount": 0,
                     "religiousHolidayHours": 0,
@@ -839,18 +906,24 @@ app.get('/', (req, res) => {
                             "value": 155
                         }
                     ],
-                    "contributions": 11990.9,
+                    "contributions": 13401.045454545456,
                     "days": 22,
-                    "paySlips": [],
+                    "paySlips": [
+                        {
+                            "url": "https://api-accountx.intelory.com/api/client/122134bf-9cfc-45e3-aa04-04eefbfde93f/pay-run/f00cc3da-1526-4cdb-813b-0deb2b3779d0/file/pay-slip/13985eb3-1bae-4fb6-885a-e6821858e4aa.pdf",
+                            "type": "PDF",
+                            "name": "PaySlip.pdf"
+                        }
+                    ],
                     "totalAllowances": 155,
                     "totalDeductions": 0,
-                    "overtimeHolidaysTotalValue": 0,
-                    "pensionInsAmount": 5932.34,
-                    "healthInsAmount": 2366.625,
-                    "additionalHealthInsAmount": 157.775,
-                    "unemploymentInsAmount": 378.66,
-                    "incomeTaxAmount": 3155.5,
-                    "netSalary": 19564.1,
+                    "overtimeHolidaysTotalValue": 3710.9090909090905,
+                    "pensionInsAmount": 6629.99090909091,
+                    "healthInsAmount": 2644.943181818182,
+                    "additionalHealthInsAmount": 176.32954545454544,
+                    "unemploymentInsAmount": 423.19090909090903,
+                    "incomeTaxAmount": 3526.590909090909,
+                    "netSalary": 21864.863636363632,
                     "deductions": [
                         {
                             "value": 0,
@@ -858,7 +931,7 @@ app.get('/', (req, res) => {
                             "startDate": "2023-08-14T22:00:00.000Z"
                         }
                     ],
-                    "effectiveNetSalary": 19564.1,
+                    "effectiveNetSalary": 21864.863636363632,
                     "activeSalary": true,
                     "totalHoursWorked": 176,
                     "salaryPerHour": 178.4090909090909,
@@ -866,9 +939,9 @@ app.get('/', (req, res) => {
                     "belongsToCurrentRerun": false,
                     "correctionPhase": false,
                     "selectedForRerun": false,
-                    "updatedAt": "2023-09-28T11:47:34.163Z",
-                    "dateUpdated": "2023-09-28 11:47 AM",
-                    "createdAt": "2023-09-28T11:47:34.163Z",
+                    "updatedAt": "2023-09-28T12:57:16.191Z",
+                    "dateUpdated": "2023-09-28 12:57 PM",
+                    "createdAt": "2023-09-28T12:57:16.191Z",
                     "employee": {
                         "id": "13985eb3-1bae-4fb6-885a-e6821858e4aa",
                         "name": "Vlerant",
@@ -938,8 +1011,8 @@ app.get('/', (req, res) => {
                     }
                 },
                 {
-                    "id": "8675a99a-cad0-43c5-aec8-3af60e82d920",
-                    "payRunId": "aa8a5abe-091a-4511-b0a1-5872e43810b1",
+                    "id": "41270aa8-7e70-4f76-b4d5-f56db56931f4",
+                    "payRunId": "f00cc3da-1526-4cdb-813b-0deb2b3779d0",
                     "employeeId": "ec786a3b-a634-4aa0-9584-86a839b35854",
                     "effectiveGross": 2074.5,
                     "baseGross": 1500,
@@ -967,7 +1040,13 @@ app.get('/', (req, res) => {
                     ],
                     "contributions": 788.31,
                     "days": 22,
-                    "paySlips": [],
+                    "paySlips": [
+                        {
+                            "url": "https://api-accountx.intelory.com/api/client/122134bf-9cfc-45e3-aa04-04eefbfde93f/pay-run/f00cc3da-1526-4cdb-813b-0deb2b3779d0/file/pay-slip/ec786a3b-a634-4aa0-9584-86a839b35854.pdf",
+                            "type": "PDF",
+                            "name": "PaySlip.pdf"
+                        }
+                    ],
                     "totalAllowances": 552,
                     "totalDeductions": 0,
                     "overtimeHolidaysTotalValue": 0,
@@ -992,9 +1071,9 @@ app.get('/', (req, res) => {
                     "belongsToCurrentRerun": false,
                     "correctionPhase": false,
                     "selectedForRerun": false,
-                    "updatedAt": "2023-09-28T11:47:34.163Z",
-                    "dateUpdated": "2023-09-28 11:47 AM",
-                    "createdAt": "2023-09-28T11:47:34.163Z",
+                    "updatedAt": "2023-09-28T12:54:22.587Z",
+                    "dateUpdated": "2023-09-28 12:51 PM",
+                    "createdAt": "2023-09-28T12:54:22.587Z",
                     "employee": {
                         "id": "ec786a3b-a634-4aa0-9584-86a839b35854",
                         "name": "Erlind",
@@ -1071,8 +1150,8 @@ app.get('/', (req, res) => {
                     }
                 },
                 {
-                    "id": "aaa5a4a3-78b0-4215-82d1-177d20a87ea6",
-                    "payRunId": "aa8a5abe-091a-4511-b0a1-5872e43810b1",
+                    "id": "14c1ce36-ec42-4d88-9c4e-b1cfcb82153c",
+                    "payRunId": "f00cc3da-1526-4cdb-813b-0deb2b3779d0",
                     "employeeId": "a2c96c9a-f687-41ce-b796-0492f6acb663",
                     "effectiveGross": 35500,
                     "baseGross": 35000,
@@ -1097,7 +1176,13 @@ app.get('/', (req, res) => {
                     ],
                     "contributions": 13490,
                     "days": 22,
-                    "paySlips": [],
+                    "paySlips": [
+                        {
+                            "url": "https://api-accountx.intelory.com/api/client/122134bf-9cfc-45e3-aa04-04eefbfde93f/pay-run/f00cc3da-1526-4cdb-813b-0deb2b3779d0/file/pay-slip/a2c96c9a-f687-41ce-b796-0492f6acb663.pdf",
+                            "type": "PDF",
+                            "name": "PaySlip.pdf"
+                        }
+                    ],
                     "totalAllowances": 500,
                     "totalDeductions": 0,
                     "overtimeHolidaysTotalValue": 0,
@@ -1122,9 +1207,9 @@ app.get('/', (req, res) => {
                     "belongsToCurrentRerun": false,
                     "correctionPhase": false,
                     "selectedForRerun": false,
-                    "updatedAt": "2023-09-28T11:47:34.163Z",
-                    "dateUpdated": "2023-09-28 11:47 AM",
-                    "createdAt": "2023-09-28T11:47:34.163Z",
+                    "updatedAt": "2023-09-28T12:54:22.587Z",
+                    "dateUpdated": "2023-09-28 12:55 PM",
+                    "createdAt": "2023-09-28T12:54:22.587Z",
                     "employee": {
                         "id": "a2c96c9a-f687-41ce-b796-0492f6acb663",
                         "name": "Ilir",
@@ -1194,8 +1279,8 @@ app.get('/', (req, res) => {
                     }
                 },
                 {
-                    "id": "01c3f3ba-0ec8-422d-8c95-85b4dc479b2d",
-                    "payRunId": "aa8a5abe-091a-4511-b0a1-5872e43810b1",
+                    "id": "206b63df-1c0b-45c4-b430-a124cec30080",
+                    "payRunId": "f00cc3da-1526-4cdb-813b-0deb2b3779d0",
                     "employeeId": "7719a6dd-164a-4623-ba08-220bb4df9a5f",
                     "effectiveGross": 23145,
                     "baseGross": 21000,
@@ -1220,7 +1305,13 @@ app.get('/', (req, res) => {
                     ],
                     "contributions": 8795.1,
                     "days": 22,
-                    "paySlips": [],
+                    "paySlips": [
+                        {
+                            "url": "https://api-accountx.intelory.com/api/client/122134bf-9cfc-45e3-aa04-04eefbfde93f/pay-run/f00cc3da-1526-4cdb-813b-0deb2b3779d0/file/pay-slip/7719a6dd-164a-4623-ba08-220bb4df9a5f.pdf",
+                            "type": "PDF",
+                            "name": "PaySlip.pdf"
+                        }
+                    ],
                     "totalAllowances": 1200,
                     "totalDeductions": 0,
                     "overtimeHolidaysTotalValue": 0,
@@ -1245,9 +1336,9 @@ app.get('/', (req, res) => {
                     "belongsToCurrentRerun": false,
                     "correctionPhase": false,
                     "selectedForRerun": false,
-                    "updatedAt": "2023-09-28T11:47:34.163Z",
-                    "dateUpdated": "2023-09-28 11:47 AM",
-                    "createdAt": "2023-09-28T11:47:34.163Z",
+                    "updatedAt": "2023-09-28T12:54:22.587Z",
+                    "dateUpdated": "2023-09-28 12:51 PM",
+                    "createdAt": "2023-09-28T12:54:22.587Z",
                     "employee": {
                         "id": "7719a6dd-164a-4623-ba08-220bb4df9a5f",
                         "name": "Besart",
@@ -1323,8 +1414,8 @@ app.get('/', (req, res) => {
                     }
                 },
                 {
-                    "id": "88b80270-478b-4345-8a6a-7be4683d7b55",
-                    "payRunId": "aa8a5abe-091a-4511-b0a1-5872e43810b1",
+                    "id": "3fbc7173-1a88-4876-93c0-49b99caef250",
+                    "payRunId": "f00cc3da-1526-4cdb-813b-0deb2b3779d0",
                     "employeeId": "49971cf6-0314-4789-95ba-409123926673",
                     "effectiveGross": 2029,
                     "baseGross": 1200,
@@ -1344,15 +1435,21 @@ app.get('/', (req, res) => {
                     "shiftWorkAmount": 0,
                     "allowances": [
                         {
-                            "value": 344
+                            "value": 455
                         },
                         {
-                            "value": 455
+                            "value": 344
                         }
                     ],
                     "contributions": 771.02,
                     "days": 22,
-                    "paySlips": [],
+                    "paySlips": [
+                        {
+                            "url": "https://api-accountx.intelory.com/api/client/122134bf-9cfc-45e3-aa04-04eefbfde93f/pay-run/f00cc3da-1526-4cdb-813b-0deb2b3779d0/file/pay-slip/49971cf6-0314-4789-95ba-409123926673.pdf",
+                            "type": "PDF",
+                            "name": "PaySlip.pdf"
+                        }
+                    ],
                     "totalAllowances": 799,
                     "totalDeductions": 0,
                     "overtimeHolidaysTotalValue": 0,
@@ -1368,12 +1465,12 @@ app.get('/', (req, res) => {
                     "totalHoursWorked": 176,
                     "salaryPerHour": 6.988636363636363,
                     "payOnlyContributions": false,
-                    "belongsToCurrentRerun": false,
-                    "correctionPhase": false,
+                    "belongsToCurrentRerun": true,
+                    "correctionPhase": true,
                     "selectedForRerun": false,
-                    "updatedAt": "2023-09-28T11:47:34.163Z",
-                    "dateUpdated": "2023-09-28 11:47 AM",
-                    "createdAt": "2023-09-28T11:47:34.163Z",
+                    "updatedAt": "2023-09-28T12:54:22.587Z",
+                    "dateUpdated": "2023-10-02 11:16 AM",
+                    "createdAt": "2023-09-28T12:54:22.587Z",
                     "employee": {
                         "id": "49971cf6-0314-4789-95ba-409123926673",
                         "name": "Veton",
@@ -1444,5 +1541,5 @@ app.get('/', (req, res) => {
 });
 
 app.listen(4000, () => {
-    console.log("Starting in http://www.localhost:4000");
+    console.log("Starting in http://localhost:4000");
 });

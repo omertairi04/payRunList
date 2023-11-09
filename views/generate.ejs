@@ -3,60 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Generate Pay List</title>
+    <title>PayList</title>
     <style>
          /* Add CSS styles to control spacing and create columns */
+         * {
+            font-family: sans-serif;
+         }
+
+         .payListInformation li{
+            font-size: 20px;
+            padding: 5px;
+         }
+
+         .payList {
+            text-align: center;
+            color: #343a40;
+         }
          table {
             border-collapse: collapse;
             width: 100%;
+            font-size: 20px;
         }
 
         th, td {
             border: 1px solid black;
+            text-align: center;
             padding: 5px;
         }
 
         th {
             background-color: #ccc;
+            /* style better */
         }
     </style>
 </head>
 <body>
     <!-- Access the payRunData object in your EJS template -->
-    <h1>Pay Run Data</h1>
-    <ul>
+    <h1 class="payList">PayList</h1>
+    <ul class="payListInformation">
         <li>Status: <%= data.status %></li>
-        <li>Earnings: <%= data.earnings %></li>
-        <li>Effective Net: <%= data.effectiveNet %></li>
-        <li>Start Date: <%= data.startDate %></li>
-        <li>End Date: <%= data.endDate %></li>
-        <li>Paid Dates: <% if (data.paidDates != 0) { %>
-            <li><%= data.paidDates %></li>
-        <% } %></li>
+        <li>Earnings: <%= data.earnings.toLocaleString('de-DE', { style: 'currency', currency: 'MKD' }) %></li>
+        <li>Effective Net: <%= data.effectiveNet.toLocaleString('de-DE', { style: 'currency', currency: 'MKD' }) %></li>
+        <li>Start Date: <% var startDate = new Date(data.startDate); %>
+            <%= startDate.getFullYear() %>-<%= (startDate.getMonth() + 1).toString().padStart(2, '0') %>-<%= startDate.getDate().toString().padStart(2, '0') %></li>
+        <li>End Date: <% var endDate = new Date(data.endDate); %>
+            <%= endDate.getFullYear() %>-<%= (endDate.getMonth() + 1).toString().padStart(2, '0') %>-<%= endDate.getDate().toString().padStart(2, '0') %></li>
+        <li>Paid Dates:
+            <% if (data.paidDates && data.paidDates.length > 0) { %>
+                <ul>
+                    <% for (let payRunDate of data.paidDates) { %>
+                        <% var formattedDate = new Date(payRunDate).toISOString().slice(0, 10); %>
+                        <li><%= formattedDate %></li>
+                    <% } %>
+                </ul>
+            <% } else { %>
+                No paid dates available.
+            <% } %>
+        </li>
+        
     </ul>
 
-        <h3>Pay Run List</h3>
+        <br>
         <table>
             <tr>
-                <th>Employee</th>
-                <th>Base Gross</th>
-                <th>Effective Gross Salary</th>
-                <th>Effective Net Salary</th>
-                <th>Income Tax Amount</th>
-                <th>Additional Health Ins Amount</th>
-                <th>Unemployment Ins Amount</th>
+                <th style="text-align: left;">Employee</th>
+                <th style="text-align: right;">Base Gross</th>
+                <th style="text-align: right;">Effective Gross Salary</th>
+                <th style="text-align: right;">Effective Net Salary</th>
+                <th style="text-align: right;">Income Tax Amount</th>
+                <th style="text-align: right;">Additional Health Ins Amount</th>
+                <th style="text-align: right;">Unemployment Ins Amount</th>
             </tr>
         </thead>
             <tbody>
                 <% for (let item of data.payRunData) { %>
                     <tr>
-                        <td><%= item.employee.name %> <%= item.employee.surname %></td>
-                        <td><p style="float: left;">Den.</p> <p style="float: right;"><%= item.baseGross %></p></td>
-                        <td>Den. <%= item.effectiveGross %></span>
-                        <td>Den. <%= item.effectiveNetSalary %></span>
-                        <td>Den. <%= item.incomeTaxAmount %></span>
-                        <td>Den. <%= item.additionalHealthInsAmount %></span>
-                        <td>Den. <%= item.unemploymentInsAmount %></span>
+                        <td style="text-align: left;"><%= item.employee.name %> <%= item.employee.surname %></td>
+                        <td style="text-align: right;"><%= item.baseGross.toLocaleString('de-DE', { style: 'currency', currency: 'MKD' }) %></td>
+                        <td style="text-align: right;"><%= item.effectiveGross.toLocaleString('de-DE', { style: 'currency', currency: 'MKD' }) %></td>
+                        <td style="text-align: right;"><%= item.effectiveNetSalary.toLocaleString('de-DE', { style: 'currency', currency: 'MKD' }) %></td>
+                        <td style="text-align: right;"><%= item.incomeTaxAmount.toLocaleString('de-DE', { style: 'currency', currency: 'MKD' }) %></td>
+                        <td style="text-align: right;"><%= item.additionalHealthInsAmount.toLocaleString('de-DE', { style: 'currency', currency: 'MKD' }) %></td>
+                        <td style="text-align: right;"><%= item.unemploymentInsAmount.toLocaleString('de-DE', { style: 'currency', currency: 'MKD' }) %></td>
                     </tr>
                 <% } %>
             </tbody>
