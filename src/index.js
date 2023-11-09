@@ -14,5 +14,5 @@ app.get('/', (req, res) => {
 });
 
 app.listen(4000, () => {
-    console.log("Starting in http://www.localhost:4000");
+    console.log("Starting in http://localhost:4000");
 });
