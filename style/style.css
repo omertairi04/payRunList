@@ -1,0 +1,31 @@
+/* Add CSS styles to control spacing and create columns */
+* {
+  font-family: sans-serif;
+}
+
+.payListInformation li {
+  font-size: 20px;
+  padding: 5px;
+}
+
+.payList {
+  text-align: center;
+  color: #343a40;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 20px;
+}
+
+th,
+td {
+  border: 1px solid black;
+  text-align: center;
+  padding: 5px;
+}
+
+th {
+  background-color: #ccc;
+  /* style better */
+}
