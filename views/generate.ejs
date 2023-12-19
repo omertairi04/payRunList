@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PayList</title>
 
     <style>
       /* Add CSS styles to control spacing and create columns */
       * {
-          font-family: sans-serif;
+        font-family: sans-serif;
       }
 
       .payListInformation li {
@@ -38,59 +38,147 @@
         /* style better */
       }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <!-- Access the payRunData object in your EJS template -->
     <h1 class="payList">PayList</h1>
     <ul class="payListInformation">
-        <li>Status: <%= data?.status %></li>
-        <li>Earnings: <%= new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'MKD', currencyDisplay: 'code' }).format(data.earnings)?.replace('MKD', 'дeн') %></li>
-        <li>Effective Net: <%= new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'MKD', currencyDisplay: 'code' }).format(data.effectiveNet)?.replace('MKD', 'дeн') %></li>
-        <li>Start Date: <% var startDate = new Date(data.startDate); %>
-            <%= startDate.getFullYear() %>-<%= (startDate.getMonth() + 1).toString().padStart(2, '0') %>-<%= startDate.getDate().toString().padStart(2, '0') %></li>
-        <li>End Date: <% var endDate = new Date(data.endDate); %>
-            <%= endDate.getFullYear() %>-<%= (endDate.getMonth() + 1).toString().padStart(2, '0') %>-<%= endDate.getDate().toString().padStart(2, '0') %></li>
-        <li>Paid Dates:
-            <% if (data.paidDates && data.paidDates.length > 0) { %>
-                <ul>
-                    <% for (let payRunDate of data.paidDates) { %>
-                        <% var formattedDate = new Date(payRunDate).toISOString().slice(0, 10); %>
-                        <li><%= formattedDate %></li>
-                    <% } %>
-                </ul>
-            <% } else { %>
-                No paid dates available.
-            <% } %>
-        </li>
-        
+      <li>Status: <%= payRuns.status %></li>
+      <li>
+        Earnings: <%= new Intl.NumberFormat('de-DE', { style: 'currency',
+        currency: 'MKD', currencyDisplay: 'code'
+        }).format(payRuns.earnings)?.replace('MKD', 'дeн') %>
+      </li>
+      <li>
+        Effective Net: <%= new Intl.NumberFormat('de-DE', { style: 'currency',
+        currency: 'MKD', currencyDisplay: 'code'
+        }).format(payRuns.effectiveNet)?.replace('MKD', 'дeн') %>
+      </li>
+      <li>
+        Start Date: <% var startDate = new Date(payRuns.startDate); %> <%=
+        startDate.getFullYear() %>-<%= (startDate.getMonth() +
+        1).toString().padStart(2, '0') %>-<%=
+        startDate.getDate().toString().padStart(2, '0') %>
+      </li>
+      <li>
+        End Date: <% var endDate = new Date(payRuns.endDate); %> <%=
+        endDate.getFullYear() %>-<%= (endDate.getMonth() +
+        1).toString().padStart(2, '0') %>-<%=
+        endDate.getDate().toString().padStart(2, '0') %>
+      </li>
+      <li>
+        Paid Dates: <% if (payRuns.paidDates && payRuns.paidDates.length > 0) {
+        %>
+        <ul>
+          <% payRuns.paidDates.forEach(function(payRunDate) { %> <% var
+          formattedDate = new Date(payRunDate).toISOString().slice(0, 10); %>
+          <li><%= formattedDate %></li>
+          <% }); %>
+        </ul>
+        <% } else { %> No paid dates available. <% } %>
+      </li>
     </ul>
 
-        <br>
-        <table>
-            <tr>
-                <th style="text-align: left;">Employee</th>
-                <th style="text-align: right;">Base Gross</th>
-                <th style="text-align: right;">Effective Gross Salary</th>
-                <th style="text-align: right;">Effective Net Salary</th>
-                <th style="text-align: right;">Income Tax Amount</th>
-                <th style="text-align: right;">Additional Health Ins Amount</th>
-                <th style="text-align: right;">Unemployment Ins Amount</th>
-            </tr>
-        </thead>
-            <tbody>
-                <% for (let item of data.payRunData) { %>
-                    <tr>
-                        <td style="text-align: left;"><%= item.employee.name %> <%= item.employee.surname %></td>
-                        <td style="text-align: right;"><%= new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'MKD', currencyDisplay: 'code' }).format(item.baseGross)?.replace('MKD', 'дeн') %></td>
-                        <td style="text-align: right;"><%= new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'MKD', currencyDisplay: 'code' }).format(item.effectiveGross)?.replace('MKD', 'дeн') %></td>
-                        <td style="text-align: right;"><%= new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'MKD', currencyDisplay: 'code' }).format(item.effectiveNetSalary)?.replace('MKD', 'дeн')%></td>
-                        <td style="text-align: right;"><%= new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'MKD', currencyDisplay: 'code' }).format(item.incomeTaxAmount)?.replace('MKD', 'дeн') %></td>
-                        <td style="text-align: right;"><%= new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'MKD', currencyDisplay: 'code' }).format(item.additionalHealthInsAmount)?.replace('MKD', 'дeн') %></td>
-                        <td style="text-align: right;"><%= new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'MKD', currencyDisplay: 'code' }).format(item.unemploymentInsAmount)?.replace('MKD', 'дeн')%></td>
-                    </tr>
-                <% } %>
-            </tbody>
-        </table>
-</body>
-</html>
+    <!-- Calculate totals -->
+    <% let totalBaseGross = 0; let totalEffectiveGross = 0; let
+    totalEffectiveNetSalary = 0; let totalIncomeTaxAmount = 0; let
+    totalAdditionalHealthInsAmount = 0; let totalUnemploymentInsAmount = 0;
+    payRuns.subPayRuns.forEach(function(subPayRun) {
+    subPayRun.payRunData.forEach(function(item) { totalBaseGross +=
+    item.baseGross || 0; totalEffectiveGross += item.effectiveGross || 0;
+    totalEffectiveNetSalary += item.effectiveNetSalary || 0;
+    totalIncomeTaxAmount += item.incomeTaxAmount || 0;
+    totalAdditionalHealthInsAmount += item.additionalHealthInsAmount || 0;
+    totalUnemploymentInsAmount += item.unemploymentInsAmount || 0; }); }); %>
+    <br />
+    <table>
+      <tr>
+        <th style="text-align: left">Employee</th>
+        <th style="text-align: right">Base Gross</th>
+        <th style="text-align: right">Effective Gross Salary</th>
+        <th style="text-align: right">Effective Net Salary</th>
+        <th style="text-align: right">Income Tax Amount</th>
+        <th style="text-align: right">Additional Health Ins Amount</th>
+        <th style="text-align: right">Unemployment Ins Amount</th>
+      </tr>
+      <tbody>
+        <% payRuns.subPayRuns.forEach(function(subPayRun) { %> <%
+        subPayRun.payRunData.forEach(function(item) { %>
+        <tr>
+          <td style="text-align: left">
+            <%= item.employee.name %> <%= item.employee.surname %>
+          </td>
+          <td style="text-align: right">
+            <%= new Intl.NumberFormat('de-DE', { style: 'currency', currency:
+            'MKD', currencyDisplay: 'code'
+            }).format(item.baseGross)?.replace('MKD', 'дeн') %>
+          </td>
+          <td style="text-align: right">
+            <%= new Intl.NumberFormat('de-DE', { style: 'currency', currency:
+            'MKD', currencyDisplay: 'code'
+            }).format(item.effectiveGross)?.replace('MKD', 'дeн') %>
+          </td>
+          <td style="text-align: right">
+            <%= new Intl.NumberFormat('de-DE', { style: 'currency', currency:
+            'MKD', currencyDisplay: 'code'
+            }).format(item.effectiveNetSalary)?.replace('MKD', 'дeн')%>
+          </td>
+          <td style="text-align: right">
+            <%= new Intl.NumberFormat('de-DE', { style: 'currency', currency:
+            'MKD', currencyDisplay: 'code'
+            }).format(item.incomeTaxAmount)?.replace('MKD', 'дeн') %>
+          </td>
+          <td style="text-align: right">
+            <%= new Intl.NumberFormat('de-DE', { style: 'currency', currency:
+            'MKD', currencyDisplay: 'code'
+            }).format(item.additionalHealthInsAmount)?.replace('MKD', 'дeн') %>
+          </td>
+          <td style="text-align: right">
+            <%= new Intl.NumberFormat('de-DE', { style: 'currency', currency:
+            'MKD', currencyDisplay: 'code'
+            }).format(item.unemploymentInsAmount)?.replace('MKD', 'дeн')%>
+          </td>
+        </tr>
+        <% }); %> <% }); %>
+      </tbody>
 
+      <div style="border: none; text-align: right; font-weight: bold">
+        <tr>
+          <td style="border: none; text-align: left; font-weight: bold">
+            Totals
+          </td>
+          <td style="border: none; text-align: right; font-weight: bold">
+            <%= new Intl.NumberFormat('de-DE', { style: 'currency', currency:
+            'MKD', currencyDisplay: 'code'
+            }).format(totalBaseGross).replace('MKD', 'дeн') %>
+          </td>
+          <td style="border: none; text-align: right; font-weight: bold">
+            <%= new Intl.NumberFormat('de-DE', { style: 'currency', currency:
+            'MKD', currencyDisplay: 'code'
+            }).format(totalEffectiveGross).replace('MKD', 'дeн') %>
+          </td>
+          <td style="border: none; text-align: right; font-weight: bold">
+            <%= new Intl.NumberFormat('de-DE', { style: 'currency', currency:
+            'MKD', currencyDisplay: 'code'
+            }).format(totalEffectiveNetSalary).replace('MKD', 'дeн') %>
+          </td>
+          <td style="border: none; text-align: right; font-weight: bold">
+            <%= new Intl.NumberFormat('de-DE', { style: 'currency', currency:
+            'MKD', currencyDisplay: 'code'
+            }).format(totalIncomeTaxAmount).replace('MKD', 'дeн') %>
+          </td>
+          <td style="border: none; text-align: right; font-weight: bold">
+            <%= new Intl.NumberFormat('de-DE', { style: 'currency', currency:
+            'MKD', currencyDisplay: 'code'
+            }).format(totalAdditionalHealthInsAmount).replace('MKD', 'дeн') %>
+          </td>
+          <td style="border: none; text-align: right; font-weight: bold">
+            <%= new Intl.NumberFormat('de-DE', { style: 'currency', currency:
+            'MKD', currencyDisplay: 'code'
+            }).format(totalUnemploymentInsAmount).replace('MKD', 'дeн') %>
+          </td>
+        </tr>
+      </div>
+    </table>
+  </body>
+</html>
