@@ -9,7 +9,6 @@ import payRun from "./payRun.json" assert { type: "json" };
 const app = express();
 
 app.use(express.static("public"));
-app.use(express.static("style"));
 app.set("view engine", "ejs");
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -26,7 +25,16 @@ app.get("/", async (req, res) => {
   const page = await browser.newPage();
   await page.setContent(renderedHtml);
 
-  const pdf = await page.pdf({ format: "A4", landscape: true });
+  const pdf = await page.pdf({
+    format: "A4",
+    landscape: true,
+    margin: {
+      top: "10px",
+      right: "5px",
+      left: "5px",
+      bottom: "5px",
+    },
+  });
 
   await browser.close();
 
