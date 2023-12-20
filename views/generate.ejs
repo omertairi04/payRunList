@@ -3,11 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PayList</title>
-
     <style>
       /* Add CSS styles to control spacing and create columns */
       * {
+        margin-top: 5px;
         font-family: sans-serif;
       }
 
@@ -15,10 +14,30 @@
         font-size: 20px;
         padding: 5px;
       }
+      /* Updated styles */
+      .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 10px;
+        margin-right: 15px;
+        margin-left: 15px;
+      }
 
+      html {
+        -webkit-print-color-adjust: exact;
+      }
       .payList {
-        text-align: center;
-        color: #343a40;
+        /* Adjust positioning to the right */
+        align-self: flex-start;
+        /* Add margin for spacing */
+        color: #91a3b0;
+        margin-left: auto;
+      }
+
+      .payListInformation {
+        /* Adjust positioning to the left */
+        align-self: flex-start;
       }
       table {
         border-collapse: collapse;
@@ -34,50 +53,53 @@
       }
 
       th {
-        background-color: #ccc;
+        background-color: #2a3439 !important;
         /* style better */
       }
     </style>
+    <title>PayList</title>
   </head>
   <body>
     <!-- Access the payRunData object in your EJS template -->
-    <h1 class="payList">PayList</h1>
-    <ul class="payListInformation">
-      <li>Status: <%= payRuns.status %></li>
-      <li>
-        Earnings: <%= new Intl.NumberFormat('de-DE', { style: 'currency',
-        currency: 'MKD', currencyDisplay: 'code'
-        }).format(payRuns.earnings)?.replace('MKD', 'дeн') %>
-      </li>
-      <li>
-        Effective Net: <%= new Intl.NumberFormat('de-DE', { style: 'currency',
-        currency: 'MKD', currencyDisplay: 'code'
-        }).format(payRuns.effectiveNet)?.replace('MKD', 'дeн') %>
-      </li>
-      <li>
-        Start Date: <% var startDate = new Date(payRuns.startDate); %> <%=
-        startDate.getFullYear() %>-<%= (startDate.getMonth() +
-        1).toString().padStart(2, '0') %>-<%=
-        startDate.getDate().toString().padStart(2, '0') %>
-      </li>
-      <li>
-        End Date: <% var endDate = new Date(payRuns.endDate); %> <%=
-        endDate.getFullYear() %>-<%= (endDate.getMonth() +
-        1).toString().padStart(2, '0') %>-<%=
-        endDate.getDate().toString().padStart(2, '0') %>
-      </li>
-      <li>
-        Paid Dates: <% if (payRuns.paidDates && payRuns.paidDates.length > 0) {
-        %>
-        <ul>
-          <% payRuns.paidDates.forEach(function(payRunDate) { %> <% var
-          formattedDate = new Date(payRunDate).toISOString().slice(0, 10); %>
-          <li><%= formattedDate %></li>
-          <% }); %>
-        </ul>
-        <% } else { %> No paid dates available. <% } %>
-      </li>
-    </ul>
+    <div class="header-container">
+      <ul class="payListInformation">
+        <li>Status: <%= payRuns.status %></li>
+        <li>
+          Earnings: <%= new Intl.NumberFormat('de-DE', { style: 'currency',
+          currency: 'MKD', currencyDisplay: 'code'
+          }).format(payRuns.earnings)?.replace('MKD', 'дeн') %>
+        </li>
+        <li>
+          Effective Net: <%= new Intl.NumberFormat('de-DE', { style: 'currency',
+          currency: 'MKD', currencyDisplay: 'code'
+          }).format(payRuns.effectiveNet)?.replace('MKD', 'дeн') %>
+        </li>
+        <li>
+          Start Date: <% var startDate = new Date(payRuns.startDate); %> <%=
+          startDate.getFullYear() %>-<%= (startDate.getMonth() +
+          1).toString().padStart(2, '0') %>-<%=
+          startDate.getDate().toString().padStart(2, '0') %>
+        </li>
+        <li>
+          End Date: <% var endDate = new Date(payRuns.endDate); %> <%=
+          endDate.getFullYear() %>-<%= (endDate.getMonth() +
+          1).toString().padStart(2, '0') %>-<%=
+          endDate.getDate().toString().padStart(2, '0') %>
+        </li>
+        <li>
+          Paid Dates: <% if (payRuns.paidDates && payRuns.paidDates.length > 0)
+          { %>
+          <ul>
+            <% payRuns.paidDates.forEach(function(payRunDate) { %> <% var
+            formattedDate = new Date(payRunDate).toISOString().slice(0, 10); %>
+            <li><%= formattedDate %></li>
+            <% }); %>
+          </ul>
+          <% } else { %> No paid dates available. <% } %>
+        </li>
+      </ul>
+      <h1 class="payList">PayList</h1>
+    </div>
 
     <!-- Calculate totals -->
     <% let totalBaseGross = 0; let totalEffectiveGross = 0; let
@@ -93,7 +115,7 @@
     <br />
     <table>
       <tr>
-        <th style="text-align: left">Employee</th>
+        <th style="text-align: left; background-color: #2a3439">Employee</th>
         <th style="text-align: right">Base Gross</th>
         <th style="text-align: right">Effective Gross Salary</th>
         <th style="text-align: right">Effective Net Salary</th>
