@@ -9,7 +9,6 @@ import payRun from "./payRun.json" assert { type: "json" };
 const app = express();
 
 app.use(express.static("public"));
-app.use(express.static("style"));
 app.set("view engine", "ejs");
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -19,14 +18,24 @@ app.get("/", async (req, res) => {
   const payRuns = payRun;
   const ejsFilePath = path.join(__dirname, "../views", "generate.ejs");
   const renderedHtml = await ejs.renderFile(ejsFilePath, {
-    data: payRuns.data,
+    payRuns: payRuns,
   });
-
   const browser = await puppeteer.launch({ headless: true });
   const page = await browser.newPage();
   await page.setContent(renderedHtml);
 
-  const pdf = await page.pdf({ format: "A4", landscape: true });
+  await page.setContent(renderedHtml, { waitUntil: "networkidle0" });
+  await page.waitForSelector(".payListInformation");
+  const pdf = await page.pdf({
+    format: "A4",
+    landscape: true,
+    margin: {
+      top: "10px",
+      right: "5px",
+      left: "5px",
+      bottom: "5px",
+    },
+  });
 
   await browser.close();
 
@@ -41,7 +50,7 @@ app.get("/", async (req, res) => {
 
 app.get("/html", (req, res) => {
   const payRuns = payRun;
-  res.render("generate", { data: payRuns.data });
+  res.render("generate", { payRuns: payRuns });
 });
 
 app.listen(4000, () => {
