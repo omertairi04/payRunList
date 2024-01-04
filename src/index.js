@@ -10,36 +10,36 @@ app.use(express.static("public"));
 app.set("view engine", "ejs");
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 // Define a route to read and parse the JSON file and render an EJS template
-app.get("/nolandscape", async (req, res) => {
-  const payRuns = payRun;
-  const ejsFilePath = path.join(__dirname, "../views", "generate.ejs");
-  const renderedHtml = await ejs.renderFile(ejsFilePath, {
-    payRuns: payRuns,
-  });
-  const browser = await puppeteer.launch({ headless: true });
-  const page = await browser.newPage();
-  await page.setContent(renderedHtml);
-  await page.setContent(renderedHtml, {
-    waitUntil: ["domcontentloaded", "networkidle0"],
-  });
-  await page.waitForSelector(".payListInformation");
-  const pdf = await page.pdf({
-    format: "A4",
-    margin: {
-      top: "10px",
-      right: "5px",
-      left: "5px",
-      bottom: "5px",
-    },
-  });
-  await browser.close();
-  // Save PDF to a file or send it as a response
-  const pdfPath = path.join(__dirname, "generated.pdf");
-  fs.writeFileSync(pdfPath, pdf);
-  // Sending the PDF as a response
-  res.contentType("application/pdf");
-  res.sendFile(pdfPath);
-});
+// app.get("/nolandscape", async (req, res) => {
+//   const payRuns = payRun;
+//   const ejsFilePath = path.join(__dirname, "../views", "generate.ejs");
+//   const renderedHtml = await ejs.renderFile(ejsFilePath, {
+//     payRuns: payRuns,
+//   });
+//   const browser = await puppeteer.launch({ headless: true });
+//   const page = await browser.newPage();
+//   await page.setContent(renderedHtml);
+//   await page.setContent(renderedHtml, {
+//     waitUntil: ["domcontentloaded", "networkidle0"],
+//   });
+//   await page.waitForSelector(".payListInformation");
+//   const pdf = await page.pdf({
+//     format: "A4",
+//     margin: {
+//       top: "10px",
+//       right: "5px",
+//       left: "5px",
+//       bottom: "5px",
+//     },
+//   });
+//   await browser.close();
+//   // Save PDF to a file or send it as a response
+//   const pdfPath = path.join(__dirname, "generated.pdf");
+//   fs.writeFileSync(pdfPath, pdf);
+//   // Sending the PDF as a response
+//   res.contentType("application/pdf");
+//   res.sendFile(pdfPath);
+// });
 // Define a route to read and parse the JSON file and render an EJS template
 app.get("/", async (req, res) => {
   const payRuns = payRun;
