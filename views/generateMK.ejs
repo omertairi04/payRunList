@@ -90,14 +90,14 @@
         </div>
         <div class="start-end">
           <div class="startDate">
-            <div class="sText">Start Date:</div>
+            <div class="sText">Од:</div>
              <div class="sDate"><% var startDate = new Date(payRuns.startDate); %> <%=
                startDate.getFullYear() %>-<%= (startDate.getMonth() +
                1).toString().padStart(2, '0') %>-<%=
                startDate.getDate().toString().padStart(2, '0') %> </div>
            </div>
            <div class="endDate">
-             <div class="eText">End Date:</div>
+             <div class="eText">До:</div>
             <div class="eDate"><% var endDate = new Date(payRuns.endDate); %> <%=
              endDate.getFullYear() %>-<%= (endDate.getMonth() +
              1).toString().padStart(2, '0') %>-<%=
@@ -105,7 +105,7 @@
            </div>
       </div>
       </div>
-      <div style="text-align: right" class="payList">Pay List</div>
+      <div style="text-align: right" class="payList">Платен Список</div>
     </div>
     <!-- Calculate totals -->
     <% let totalBaseGross = 0; let totalDays = 0; let totalEarnings = 0; let
@@ -120,20 +120,20 @@
     <table>
       <thead>
       <tr>
+        
         <th>#</th>
         <th
           style="text-align: left";
         >
-          Employee
+        Вработен
         </th>
-        <th style="text-align: right; border-right: none">Days</th>
-        <th style="text-align: right; border-left: none">Base Gross</th>
-        <th style="text-align: right">Earnings</th>
-        <th style="text-align: right;border-right: none">Contributions</th>
-        <th style="text-align: right;border-left: none"">Income Tax</th>
-        <th style="text-align: right;border-left: none"">Deductions</th>
-        <!-- <th style="text-align: right">Unemployment Ins Amount</th> -->
-        <th style="text-align: right">Effective Net</th>
+        <th style="text-align: right; border-right: none">Работни ден</th>
+        <th style="text-align: right; border-left: none">Основно Бруто</th>
+        <th style="text-align: right">Додатоци</th>
+        <th style="text-align: right;border-right: none">Придонеси</th>
+        <th style="text-align: right;border-left: none"">ПДД</th>
+        <th style="text-align: right;border-left: none"">Одбитоци</th>
+        <th style="text-align: right">Ефективно Нет</th>
       </tr>
     </thead>
       <tbody>
@@ -179,7 +179,7 @@
         <tr>
           <td style="border: none; font-weight: 750;"></td>
           <td style="border: none; text-align: left; font-weight: 750; font-size: 15px; padding-top:10px;">
-            Total
+            Вкупно
           </td>
           <td style="border: none; text-align: right; font-weight: 750; font-size: 15px; padding-top:10px;">
             <%= totalDays %>
